@@ -2,8 +2,9 @@ from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
+app.jinja_env.add_extension('jinja2.ext.loopcontrols')
 app.config.from_pyfile("app.conf")  # 加载app的初始化文件
-
+db = SQLAlchemy(app)
 from PhotoShare import views, models
 
 

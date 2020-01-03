@@ -1,6 +1,7 @@
 a {
-  color: #003569;
+    color: #003569;
 }
+
 /*清除浮动*/
 .clearfix:after,
 .clearfix:before {
@@ -10,10 +11,12 @@ a {
     height: 0;
     visibility: hidden;
 }
+
 .clearfix {
     display: block;
     zoom: 1;
 }
+
 .more-info {
     border: none;
     background: url(../../images/img/icons2.png) no-repeat -228px 0px;

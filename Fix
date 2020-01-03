@@ -1,0 +1,6 @@
+# Flask-SQLAlchemy中文教程：http://www.pythondoc.com/flask-sqlalchemy/
+
+1.Python3出现"No module named 'MySQLdb'"问题-以及使用PyMySQL连接数据库
+解决方法：在 __init__.py 文件中添加以下代码即可
+    import pymysql
+    pymysql.install_as_MySQLdb()
