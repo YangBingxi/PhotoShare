@@ -13,6 +13,7 @@ class User(db.Model):
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)  # 用户id：整形、主键、自增
     username = db.Column(db.String(80), unique=True)  # 用户名：字符串类型、唯一
     password = db.Column(db.String(32))  # 用户密码
+    salt = db.Column(db.String(32))  # 用户密码salt
     head_url = db.Column(db.String(256))  # 用户头像url地址
     image = db.relationship('Image', backref='user', lazy='dynamic')
 
@@ -20,9 +21,10 @@ class User(db.Model):
     类的构造函数
     '''
 
-    def __init__(self, username, password):
+    def __init__(self, username, password, salt=''):
         self.username = username
         self.password = password
+        self.salt = salt
         self.head_url = 'https://raw.githubusercontent.com/youngsw/Head-Img/master/head_tiny/img' \
                         + str(random.randint(0, 1000)) + \
                         'sw.png'  # 在头像库中随机选取一个作为用户的头像

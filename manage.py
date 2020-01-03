@@ -34,5 +34,6 @@ def init_database():
     print(1, User.query.all())  # 获取全部信息
     print(2, User.query.get(3))  # 获取主键为3的用户信息
 
+
 if __name__ == '__main__':
     manager.run()
