@@ -1,9 +1,15 @@
 # -*-encoding=utf8-*-
-from PhotoShare.app import app, db  # 导入app
-from flask import render_template, redirect, request, flash, get_flashed_messages
-from PhotoShare.models import Image, User
-import random
 import hashlib
+import random
+
+from flask import render_template, redirect, request, flash, get_flashed_messages
+
+from PhotoShare.app import app, db  # 导入app、db
+from PhotoShare.models import Image, User
+
+'''
+跳转页面附带消息
+'''
 
 
 def redirect_with_msg(target, msg, category):
@@ -55,13 +61,13 @@ def reg():
     检查注册用户字段是否合法
     '''
     if username == '' or password == '':
-        return redirect_with_msg('/login', "用户名或密码不能为空", "login")
+        return redirect_with_msg('/login', u"用户名或密码不能为空", "login")
     '''
     检查注册用户是否已存在
     '''
     user = User.query.filter_by(username=username).first()
     if user is not None:
-        return redirect_with_msg('/login', "用户已存在", "login")
+        return redirect_with_msg('/login', u"用户已存在", "login")
 
     '''
     注册用户
@@ -70,9 +76,9 @@ def reg():
     salt = '.'.join(random.sample("0123456789"
                                   "abcdefghijklmnopqrstuvwxyz"
                                   "ABCDEFGHIJKLMNOPQRSTUVWXYZ", 10))
-
-    m = hashlib.sha256("a".encode('utf-8'))
-    m.update(password + salt)
+    # 密码md5加密
+    m = hashlib.md5(password.encode("utf8"))
+    m.update(password.encode("utf8") + salt.encode("utf8"))
     password = m.hexdigest()
     user = User(username, password, salt)  # 创建用户
     db.session.add(user)  # 添加用户

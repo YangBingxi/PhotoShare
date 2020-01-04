@@ -1,6 +1,7 @@
-from PhotoShare.app import db
-from datetime import datetime
 import random
+from datetime import datetime
+
+from PhotoShare.app import db
 
 '''
 用户类

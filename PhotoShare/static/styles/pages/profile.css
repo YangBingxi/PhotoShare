@@ -7,6 +7,7 @@
 .page-main {
     width: 970px;
 }
+
 .profile-detail {
     margin-bottom: 20px;
 }
@@ -21,6 +22,7 @@
     background-color: #fafafa;
     border: 1px solid #dbdbdb;
 }
+
 .profile-avatar img {
     display: block;
     width: 150px;
@@ -33,6 +35,7 @@
 .profile-info-main {
     margin-bottom: 10px;
 }
+
 .profile-info-main .name {
     font-size: 34px;
     line-height: 40px;
@@ -67,13 +70,15 @@
     margin-left: 20px;
 }
 
-.profile-info-sub  {
+.profile-info-sub {
     margin-bottom: 10px;
 }
+
 .profile-info-sub h2 {
     margin-right: 5px;
     display: inline-block;
 }
+
 .birth {
     font-size: 16px;
 }
@@ -83,15 +88,19 @@
     margin-right: 40px;
     float: left;
 }
+
 .s-title {
     margin-right: 5px;
 }
+
 .s-num {
     font-weight: bold;
 }
+
 .list {
     margin-right: -20px;
 }
+
 .list .item {
     width: 290px;
     height: 290px;
@@ -100,14 +109,17 @@
     background: #edeeee;
     position: relative;
 }
+
 .img-box {
     width: 290px;
     height: 290px;
     overflow: hidden;
 }
+
 .list .item img {
     width: 290px;
 }
+
 .ico-video {
     background: url(../../images/img/icons2.png) no-repeat -172px -100px;
     background-size: 299px 291px;
@@ -122,12 +134,13 @@
 .img-mask {
     display: none;
     position: absolute;
-    background: rgba(0,0,0,.3);
+    background: rgba(0, 0, 0, .3);
     left: 0;
     right: 0;
     top: 0;
     bottom: 0;
 }
+
 .list .item:hover .img-mask,
 .list .item:hover .interaction-wrap {
     display: block;
@@ -143,14 +156,17 @@
     left: 0;
     width: 100%;
 }
+
 .interaction-item {
     font-size: 16px;
     display: inline-block;
     margin-right: 20px;
 }
+
 .interaction-item i {
     margin-right: 5px;
 }
+
 .more-content {
     margin: 50px auto 20px;
     height: 120px;
@@ -160,6 +176,7 @@
     border-radius: 50%;
     border: 2px solid #3897f0;
 }
+
 .more-content a {
     color: #3897f0;
     font-size: 14px;
