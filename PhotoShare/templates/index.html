@@ -1,5 +1,5 @@
 {% extends "base.html" %}{# 继承Flask模板 #}
-{% block title %}首页{% endblock %}{# 填充title #}
+{% block title %}首页{{ current_user.username }}{% endblock %}{# 填充title #}
 {% block css %}/static/styles/pages/index.css{% endblock %}{# 填充css文件 #}
 {% block content %}{# 填充内容 #}
     <div class="page-main clearfix">

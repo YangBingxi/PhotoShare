@@ -23,10 +23,10 @@ def init_database():
     db.create_all()
     for i in range(0, 100):
         db.session.add(User('User' + str(i), 'a' + str(i)))
-        for j in range(0, 3):  # 给每个用户随机创建三张图片
+        for j in range(0, 9):  # 给每个用户随机创建九张图片
             db.session.add(Image(get_imamge(), i + 1))
-            for k in range(0, 3):
-                db.session.add(Comment('this is a test comment' + str(k), 1 + 3 * i + j, i + 1))
+            for k in range(0, 9):
+                db.session.add(Comment('this is a test comment' + str(k), 1 + 9 * i + j, i + 1))
     db.session.commit()  # 提交数据库的修改
 
 
