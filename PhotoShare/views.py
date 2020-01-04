@@ -71,8 +71,8 @@ def reg():
                                   "abcdefghijklmnopqrstuvwxyz"
                                   "ABCDEFGHIJKLMNOPQRSTUVWXYZ", 10))
 
-    m = hashlib.sha256("a".encode('utf-8'))
-    m.update(password + salt)
+    m = hashlib.md5()
+    m.update(password.encode('utf-8') + salt.encode('utf-8'))
     password = m.hexdigest()
     user = User(username, password, salt)  # 创建用户
     db.session.add(user)  # 添加用户
