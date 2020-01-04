@@ -28,12 +28,14 @@ def init_database():
             for k in range(0, 3):
                 db.session.add(Comment('this is a test comment' + str(k), 1 + 3 * i + j, i + 1))
     db.session.commit()  # 提交数据库的修改
-    for i in range(50, 100, 2):
+
+
+'''    for i in range(50, 100, 2):
         user = User.query.get(i)
         user.username = '[New]' + user.username
     print(1, User.query.all())  # 获取全部信息
-    print(2, User.query.get(3))  # 获取主键为3的用户信息
-
+    print(1, Image.query.all())  # 获取全部信息
+    print(2, User.query.get(3))  # 获取主键为3的用户信息'''
 
 if __name__ == '__main__':
     manager.run()

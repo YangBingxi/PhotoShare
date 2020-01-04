@@ -1,9 +1,12 @@
 # -*-encoding=utf8-*-
-from PhotoShare.app import app, db  # 导入app
-from flask import render_template, redirect, request, flash, get_flashed_messages
-from PhotoShare.models import Image, User
-import random
 import hashlib
+import random
+
+from flask import render_template, redirect, request, flash, get_flashed_messages
+
+from PhotoShare.app import app, db  # 导入app
+from PhotoShare.models import Image, User
+from flask_login import login_user, logout_user, current_user, login_required
 
 
 def redirect_with_msg(target, msg, category):
@@ -78,6 +81,19 @@ def reg():
     db.session.add(user)  # 添加用户
     db.session.commit()  # 提交到数据库
 
+    login_user(user)  # 注册完后自动登录
+
+    return redirect('/')
+
+
+'''
+用户登出函数
+'''
+
+
+@app.route('/logout')
+def logout():
+    logout_user()
     return redirect('/')
 
 
@@ -90,6 +106,7 @@ def image(image_id):
 
 
 @app.route('/profile/<int:user_id>/')
+@login_required  # 添加访问权限，登录用户才可以访问
 def profile(user_id):
     user = User.query.get(user_id)
     if user is None:

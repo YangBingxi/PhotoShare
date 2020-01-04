@@ -1,4 +1,4 @@
-from PhotoShare.app import db
+from PhotoShare.app import db, login_manager
 from datetime import datetime
 import random
 
@@ -15,7 +15,7 @@ class User(db.Model):
     password = db.Column(db.String(32))  # 用户密码
     salt = db.Column(db.String(32))  # 用户密码salt
     head_url = db.Column(db.String(256))  # 用户头像url地址
-    image = db.relationship('Image', backref='user', lazy='dynamic')
+    images = db.relationship('Image', backref='user', lazy='dynamic')
 
     '''
     类的构造函数
@@ -35,6 +35,31 @@ class User(db.Model):
 
     def __repr__(self):
         return '<User %d %s>' % (self.id, self.username)
+
+    @property
+    def is_authenticated(self):
+        return True
+
+    @property
+    def is_active(self):
+        return True
+
+    @property
+    def is_anonymous(self):
+        return False
+
+    def get_id(self):
+        return self.id
+
+
+'''
+用户的登录管理
+'''
+
+
+@login_manager.user_loader
+def load_user(user_id):
+    return User.query.get(user_id)
 
 
 ''' 
