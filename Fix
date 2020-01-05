@@ -4,3 +4,18 @@
 解决方法：在 __init__.py 文件中添加以下代码即可
     import pymysql
     pymysql.install_as_MySQLdb()
+
+
+
+
+
+
+
+
+
+未解决的问题：
+    消息提醒的弹框
+    退出登陆后，数据未清除
+    is not None 语句不工作
+    分页实现
+    用户安全验证

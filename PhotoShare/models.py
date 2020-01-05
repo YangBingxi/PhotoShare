@@ -1,4 +1,4 @@
-from PhotoShare.app import db
+from PhotoShare.app import db, login_manager
 from datetime import datetime
 import random
 
@@ -13,16 +13,18 @@ class User(db.Model):
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)  # 用户id：整形、主键、自增
     username = db.Column(db.String(80), unique=True)  # 用户名：字符串类型、唯一
     password = db.Column(db.String(32))  # 用户密码
+    salt = db.Column(db.String(32))  # 用户密码salt
     head_url = db.Column(db.String(256))  # 用户头像url地址
-    image = db.relationship('Image', backref='user', lazy='dynamic')
+    images = db.relationship('Image', backref='user', lazy='dynamic')
 
     '''
     类的构造函数
     '''
 
-    def __init__(self, username, password):
+    def __init__(self, username, password, salt=''):
         self.username = username
         self.password = password
+        self.salt = salt
         self.head_url = 'https://raw.githubusercontent.com/youngsw/Head-Img/master/head_tiny/img' \
                         + str(random.randint(0, 1000)) + \
                         'sw.png'  # 在头像库中随机选取一个作为用户的头像
@@ -33,6 +35,31 @@ class User(db.Model):
 
     def __repr__(self):
         return '<User %d %s>' % (self.id, self.username)
+
+    @property
+    def is_authenticated(self):
+        return True
+
+    @property
+    def is_active(self):
+        return True
+
+    @property
+    def is_anonymous(self):
+        return False
+
+    def get_id(self):
+        return self.id
+
+
+'''
+用户的登录管理
+'''
+
+
+@login_manager.user_loader
+def load_user(user_id):
+    return User.query.get(user_id)
 
 
 ''' 
