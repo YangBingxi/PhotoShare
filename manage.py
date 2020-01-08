@@ -6,7 +6,7 @@ import random
 manager = Manager(app)
 
 
-def get_imamge():
+def get_image_url():
     return 'https://raw.githubusercontent.com/youngsw/Head-Img/master/img/img' \
            + str(random.randint(0, 1000)) + \
            'sw.png'  # 在头像库中随机选取一个作为用户的头像
@@ -22,11 +22,12 @@ def init_database():
     db.drop_all()
     db.create_all()
     for i in range(0, 100):
-        db.session.add(User('User' + str(i), 'a' + str(i)))
-        for j in range(0, 9):  # 给每个用户随机创建九张图片
-            db.session.add(Image(get_imamge(), i + 1))
-            for k in range(0, 9):
-                db.session.add(Comment('this is a test comment' + str(k), 1 + 9 * i + j, i + 1))
+        db.session.add(User('User' + str(i+1), 'a'+str(i+1)))
+        for j in range(0, 10):
+            db.session.add(Image(get_image_url(), i+1))
+            for k in range(0, 3):
+                db.session.add(Comment('This is a comment' + str(k), 1+10*i+j, i+1))
+
     db.session.commit()  # 提交数据库的修改
 
 
