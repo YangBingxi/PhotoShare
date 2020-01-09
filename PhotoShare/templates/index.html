@@ -62,7 +62,9 @@
                                    href="/profile/{{ comment.user.id }}"
                                    data-reactid=".0.1.0.0.0.2.1.2:$comment-17856951190001917.1">{{ comment.user.username }}</a>
                                 <span>
-                        <span>{{ comment.content }}</span>
+                        <span>
+                            {{ comment.content }}
+                        </span>
                     </span>
                             </li>
                         {% endfor %}
@@ -82,10 +84,15 @@
 
         {% endfor %}
 
+    </div>
+
+    {% if has_next %}
+    <div class="content-box">
         <div class="more-content js-load-more">
             <a class="_oidfu" href="javascript:void(0);">更多</a>
         </div>
     </div>
+    {% endif %}
 {% endblock %}
 {% block js %}
     <script type="text/javascript" src="/static/js/jquery.js"></script>

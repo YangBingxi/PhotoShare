@@ -26,7 +26,9 @@ def redirect_with_msg(target, msg, category):
 @app.route("/")
 def index():
     images = Image.query.order_by(db.desc(Image.id)).limit(10).all()
-    return render_template('index.html', images=images)
+    # return render_template('index.html', images=images)
+    paginate = Image.query.paginate(page=1, per_page=6, error_out=False)  # 分页，每页三张图片
+    return render_template('index.html', images=paginate.items, has_next=paginate.has_next)
 
 
 '''
@@ -43,21 +45,22 @@ def index_images(page, per_page):
         comments = []
         for i in range(0, min(2, len(image.comments))):
             comment = image.comments[i]
-            comments.append({'username':comment.user.username,
-                             'user_id':comment.user_id,
-                             'content':comment.content})
+            comments.append({'username': comment.user.username,
+                             'user_id': comment.user_id,
+                             'content': comment.content})
         imgvo = {'id': image.id,
                  'url': image.url,
                  'comment_count': len(image.comments),
                  'user_id': image.user_id,
-                 'username':image.user.username,
-                 'head_url':image.user.head_url,
-                 'created_date':str(image.create_date),
-                 'comments':comments}
+                 'username': image.user.username,
+                 'head_url': image.user.head_url,
+                 'created_date': str(image.create_date),
+                 'comments': comments}
         images.append(imgvo)
 
     map['images'] = images
     return json.dumps(map)
+
 
 '''
 Not Found 页面
