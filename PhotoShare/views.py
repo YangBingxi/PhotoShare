@@ -30,6 +30,36 @@ def index():
 
 
 '''
+网站主页分页
+'''
+
+
+@app.route('/index/images/<int:page>/<int:per_page>/')
+def index_images(page, per_page):
+    paginate = Image.query.order_by(db.desc(Image.id)).paginate(page=page, per_page=per_page, error_out=False)
+    map = {'has_next': paginate.has_next}
+    images = []
+    for image in paginate.items:
+        comments = []
+        for i in range(0, min(2, len(image.comments))):
+            comment = image.comments[i]
+            comments.append({'username':comment.user.username,
+                             'user_id':comment.user_id,
+                             'content':comment.content})
+        imgvo = {'id': image.id,
+                 'url': image.url,
+                 'comment_count': len(image.comments),
+                 'user_id': image.user_id,
+                 'username':image.user.username,
+                 'head_url':image.user.head_url,
+                 'created_date':str(image.create_date),
+                 'comments':comments}
+        images.append(imgvo)
+
+    map['images'] = images
+    return json.dumps(map)
+
+'''
 Not Found 页面
 '''
 
@@ -197,6 +227,10 @@ def save_to_load(file, file_name):
 def view_image(image_name):
     return send_from_directory(app.config['UPLOAD_DIR'], image_name)'''
 
+'''
+添加评论
+'''
+
 
 @app.route('/addcomment/', methods={'post'})
 @login_required
@@ -206,7 +240,7 @@ def add_comment():
     comment = Comment(content, image_id, current_user.id)
     db.session.add(comment)
     db.session.commit()
-    return json.dumps({"code":0, "id":comment.id,
-                       "content":comment.content,
-                       "username":comment.user.username,
-                       "user_id":comment.user_id})
+    return json.dumps({"code": 0, "id": comment.id,
+                       "content": comment.content,
+                       "username": comment.user.username,
+                       "user_id": comment.user_id})

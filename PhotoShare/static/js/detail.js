@@ -49,7 +49,7 @@ $(function () {
             });
         });
     }
-
+    /*去除敏感词*/
     function fEncode(sStr, bDecode) {
         var aReplace =["&#39;", "'", "&quot;", '"', "&nbsp;", " ", "&gt;", ">", "&lt;", "<", "&amp;", "&", "&yen;", "¥"];
         !bDecode && aReplace.reverse();
