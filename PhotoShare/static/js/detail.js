@@ -38,8 +38,8 @@ $(function () {
                 // 渲染新的评论
                 var sHtml = [
                     '<li>',
-                        '<a class="_4zhc5 _iqaka" title="', that.encode(oResult.username), '" href="/profile/', oResult.user_id, '">', that.encode(oResult.username), '</a> ',
-                        '<span><span>', that.encode(sCmt), '</span></span>',
+                    '<a class="_4zhc5 _iqaka" title="', that.encode(oResult.username), '" href="/profile/', oResult.user_id, '">', that.encode(oResult.username), '</a> ',
+                    '<span><span>', that.encode(sCmt), '</span></span>',
                     '</li>'].join('');
                 oListDv.prepend(sHtml);
             }).fail(function (oResult) {
@@ -49,12 +49,13 @@ $(function () {
             });
         });
     }
+
     /*去除敏感词*/
     function fEncode(sStr, bDecode) {
-        var aReplace =["&#39;", "'", "&quot;", '"', "&nbsp;", " ", "&gt;", ">", "&lt;", "<", "&amp;", "&", "&yen;", "¥"];
+        var aReplace = ["&#39;", "'", "&quot;", '"', "&nbsp;", " ", "&gt;", ">", "&lt;", "<", "&amp;", "&", "&yen;", "¥"];
         !bDecode && aReplace.reverse();
         for (var i = 0, l = aReplace.length; i < l; i += 2) {
-             sStr = sStr.replace(new RegExp(aReplace[i],'g'), aReplace[i+1]);
+            sStr = sStr.replace(new RegExp(aReplace[i], 'g'), aReplace[i + 1]);
         }
         return sStr;
     };

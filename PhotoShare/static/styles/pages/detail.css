@@ -10,6 +10,7 @@
     text-align: center;
     background: #f7f7f7;
 }
+
 .pic-wrapper img {
     display: block;
     width: 600px;
@@ -33,6 +34,7 @@
     padding-bottom: 20px;
     margin-bottom: 20px;
 }
+
 .avatar {
     display: inline-block;
     width: 40px;
@@ -43,14 +45,17 @@
     border: 1px solid #dbdbdb;
     margin-right: 5px;
 }
+
 .avatar img {
     width: 40px;
 }
+
 .profile-info {
     font-weight: bold;
     display: inline-block;
     vertical-align: middle;
 }
+
 .profile-info a {
     color: #333;
 }
@@ -62,10 +67,12 @@
 .like-names {
     margin-right: 50px;
 }
+
 .like-names a {
     color: #333;
     font-weight: bold;
 }
+
 .discuss-time {
     float: right;
     color: #888;
@@ -117,6 +124,7 @@
     display: inline-block;
     vertical-align: middle;
 }
+
 .discuss-edit input {
     font-size: 15px;
     line-height: 18px;

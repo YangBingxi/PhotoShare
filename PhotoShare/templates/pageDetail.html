@@ -1,11 +1,11 @@
-{% extends "base.html" %}{# 继承Flask模板 #}
-{% block title %}详情页{% endblock %}{# 填充title #}
-{% block css %}/static/styles/pages/detail.css{% endblock %}{# 填充css文件 #}
-{% block content %}{# 填充内容 #}
+{% extends "base.html" %}
+{% block title %}详情页{% endblock %}
+{% block css %}/static/styles/pages/detail.css{% endblock %}
+{% block content %}
     <div class="page-main clearfix">
         <article>
             <div class="pic-wrapper">
-                <img src="{{ image.url }}">
+                <img src="{{ image.url }}?imageView/1/w/600/h/600">
             </div>
             <div class="pic-discuss">
                 <header class="discuss-hd">
@@ -60,9 +60,7 @@
                 </ul>
                 <section class="discuss-edit">
                     <a class="icon-heart-empty"></a>
-                    <form>
-                        <input placeholder="添加评论..." id="jsCmt" type="text">
-                    </form>
+                    <input placeholder="添加评论..." id="jsCmt" type="text">
                     <button class="more-info" id="jsSubmit">更多选项</button>
                 </section>
             </div>

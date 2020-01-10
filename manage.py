@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 from PhotoShare.app import app, db
 from flask_script import Manager
 from PhotoShare.models import User, Image, Comment
@@ -22,11 +24,11 @@ def init_database():
     db.drop_all()
     db.create_all()
     for i in range(0, 100):
-        db.session.add(User('User' + str(i+1), 'a'+str(i+1)))
+        db.session.add(User('User' + str(i + 1), 'a' + str(i + 1)))
         for j in range(0, 10):
-            db.session.add(Image(get_image_url(), i+1))
+            db.session.add(Image(get_image_url(), i + 1))
             for k in range(0, 3):
-                db.session.add(Comment('This is a comment' + str(k), 1+10*i+j, i+1))
+                db.session.add(Comment('This is a comment' + str(k), 1 + 10 * i + j, i + 1))
 
     db.session.commit()  # 提交数据库的修改
 

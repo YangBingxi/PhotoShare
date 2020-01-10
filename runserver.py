@@ -1,7 +1,9 @@
-from PhotoShare import app
+# -*- coding: utf-8 -*-
+
+from PhotoShare.app import app
 
 '''
 运行函数
 '''
 if __name__ == '__main__':
-    app.app.run(debug=True)
+    app.run(debug=True)
