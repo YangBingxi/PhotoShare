@@ -27,8 +27,8 @@ class User(db.Model):
         self.username = username
         self.password = password
         self.salt = salt
-        self.head_url = 'https://raw.githubusercontent.com/youngsw/Head-Img/master/head_tiny/img' \
-                        + str(random.randint(0, 1000)) + \
+        self.head_url = 'https://raw.githubusercontent.com/youngsw/Head-Img/master/headUrl2/HeadImg' \
+                        + str(random.randint(1, 171)) + \
                         'sw.png'  # 在头像库中随机选取一个作为用户的头像
 
     '''

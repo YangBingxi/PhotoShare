@@ -9,8 +9,8 @@ manager = Manager(app)
 
 
 def get_image_url():
-    return 'https://raw.githubusercontent.com/youngsw/Head-Img/master/img/img' \
-           + str(random.randint(0, 1000)) + \
+    return 'https://raw.githubusercontent.com/youngsw/Head-Img/master/headUrl2/HeadImg' \
+           + str(random.randint(1, 171)) + \
            'sw.png'  # 在头像库中随机选取一个作为用户的头像
 
 
