@@ -7,7 +7,7 @@ import uuid
 
 from flask import render_template, redirect, request, flash, get_flashed_messages, send_from_directory
 
-from PhotoShare.app import app, db  # 导入app
+from PhotoShare import app, db  # 导入app
 from PhotoShare.models import Image, User, Comment
 from flask_login import login_user, logout_user, current_user, login_required
 from PhotoShare.qiniusdk import qiniu_upload_file

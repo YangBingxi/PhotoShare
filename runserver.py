@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from PhotoShare.app import app
+from PhotoShare import app
 
 '''
 运行函数

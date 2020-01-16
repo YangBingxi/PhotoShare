@@ -1,6 +1,6 @@
 # -*-encoding=utf8-*-
 
-from PhotoShare.app import app
+from PhotoShare import app
 from qiniu import Auth, put_file, etag, urlsafe_base64_encode, put_data
 import qiniu.config
 from qiniu.compat import is_py2, is_py3

@@ -1,6 +1,6 @@
 # -*-encoding=utf8-*-
 
-from flask import Flask
+'''from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager
 
@@ -21,3 +21,4 @@ def hello_world():
 
 if __name__ == '__main__':
     app.run()
+'''

@@ -1,6 +1,6 @@
 # -*-encoding=utf8-*-
 
-from PhotoShare.app import db, login_manager
+from PhotoShare import db, login_manager
 from datetime import datetime
 import random
 

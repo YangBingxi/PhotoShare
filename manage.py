@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from PhotoShare.app import app, db
+from PhotoShare import app, db
 from flask_script import Manager
 from PhotoShare.models import User, Image, Comment
 import random
