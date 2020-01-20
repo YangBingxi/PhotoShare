@@ -26,5 +26,3 @@ def qiniu_upload_file(source_file, save_file_name):
     if info.status_code == 200:
         return domain_prefix + save_file_name
     return None
-
-

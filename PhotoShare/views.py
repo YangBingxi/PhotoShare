@@ -13,7 +13,6 @@ from flask_login import login_user, logout_user, current_user, login_required
 from PhotoShare.qiniusdk import qiniu_upload_file
 
 
-
 def redirect_with_msg(target, msg, category):
     if msg is not None:
         flash(msg, category=category)
@@ -188,7 +187,8 @@ def profile(user_id):
     user = User.query.get(user_id)
     if user is None:
         return redirect('/error')
-    paginate = Image.query.filter_by(user_id=user_id).order_by(db.desc(Image.id)).paginate(page=1, per_page=3, error_out=False)
+    paginate = Image.query.filter_by(user_id=user_id).order_by(db.desc(Image.id)).paginate(page=1, per_page=3,
+                                                                                           error_out=False)
     print(user.id)
     return render_template('profile.html', user=user, images=paginate.items, has_next=paginate.has_next)
 
@@ -204,9 +204,6 @@ def user_images(user_id, page, per_page):
         images.append(imgvo)
     map['images'] = images
     return json.dumps(map)
-
-
-
 
 
 '''
@@ -227,18 +224,21 @@ def add_comment():
                        "username": comment.user.username,
                        "user_id": comment.user_id})
 
+
 @app.route('/image/<image_name>')
 def view_image(image_name):
     return send_from_directory(app.config['UPLOAD_DIR'], image_name)
 
 
-def save_to_qiniu(file,file_name):
-    return qiniu_upload_file(file,file_name)
+def save_to_qiniu(file, file_name):
+    return qiniu_upload_file(file, file_name)
+
 
 def save_to_local(file, file_name):
     save_dir = app.config['UPLOAD_DIR']
     file.save(os.path.join(save_dir, file_name))
     return '/image/' + file_name
+
 
 @app.route('/upload/', methods={'post'})
 @login_required
@@ -249,13 +249,11 @@ def upload():
         file_ext = file.filename.rsplit('.', 1)[1].strip().lower()
     if file_ext in app.config['ALLOWED_EXT']:
         file_name = str(uuid.uuid1()).replace('-', '') + '.' + file_ext
-        url = qiniu_upload_file(file,file_name)
+        url = qiniu_upload_file(file, file_name)
 
-        #url = save_to_local(file, file_name)
+        # url = save_to_local(file, file_name)
         if url != None:
             db.session.add(Image(url, current_user.id))
             db.session.commit()
 
     return redirect('/profile/%d' % current_user.id)
-
-
