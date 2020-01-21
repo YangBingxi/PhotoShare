@@ -35,6 +35,7 @@ class User(db.Model):
         打印函数
         '''
 
+
     def __repr__(self):
         return '<User %d %s>' % (self.id, self.username)
 
