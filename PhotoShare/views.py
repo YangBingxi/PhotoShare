@@ -1,16 +1,21 @@
 # -*-encoding=utf8-*-
 import hashlib
+import json
 import os
 import random
-import json
+import sys
 import uuid
 
 from flask import render_template, redirect, request, flash, get_flashed_messages, send_from_directory
+from flask_login import login_user, logout_user, current_user, login_required
 
 from PhotoShare import app, db  # 导入app
 from PhotoShare.models import Image, User, Comment
-from flask_login import login_user, logout_user, current_user, login_required
 from PhotoShare.qiniusdk import qiniu_upload_file
+
+# 解决用户名中文输入的问题
+reload(sys)
+sys.setdefaultencoding('utf-8')
 
 
 def redirect_with_msg(target, msg, category):
@@ -119,8 +124,10 @@ def login():
 
 @app.route("/reg", methods={'post', 'get'})
 def reg():
-    username = str(request.values.get('username')).strip()  # 从前端获取用户名
+    username = str(request.values.get('username'.encode('utf-8'))).strip()  # 从前端获取用户名
+    print username
     password = str(request.values.get('password')).strip()  # 从前端获取密码
+    print password
     '''
     检查注册用户字段是否合法
     '''
