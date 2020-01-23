@@ -125,9 +125,7 @@ def login():
 @app.route("/reg", methods={'post', 'get'})
 def reg():
     username = str(request.values.get('username'.encode('utf-8'))).strip()  # 从前端获取用户名
-    print username
     password = str(request.values.get('password')).strip()  # 从前端获取密码
-    print password
     '''
     检查注册用户字段是否合法
     '''
