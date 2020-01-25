@@ -194,13 +194,13 @@ def profile(user_id):
         return redirect('/error')
     paginate = Image.query.filter_by(user_id=user_id).order_by(db.desc(Image.id)).paginate(page=1, per_page=3,
                                                                                            error_out=False)
-    print(user.id)
+    # print(user.id)
     return render_template('profile.html', user=user, images=paginate.items, has_next=paginate.has_next)
 
 
 @app.route('/profile/images/<int:user_id>/<int:page>/<int:per_page>/')
 def user_images(user_id, page, per_page):
-    paginate = Image.query.filter_by(user_id=user_id).paginate(page=page, per_page=per_page,
+    paginate = Image.query.filter_by(user_id=user_id).order_by(db.desc(Image.id)).paginate(page=page, per_page=per_page,
                                                                error_out=False)  # 分页，每页三张图片
     map = {'has_next': paginate.has_next}
     images = []
