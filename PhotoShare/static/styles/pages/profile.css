@@ -56,15 +56,29 @@
 
 .btn-success {
     border-radius: 3px;
-    border: 1px solid #70c050;
+    border: 1px solid #3ef017;
     font-weight: 600;
     font-size: 16px;
     outline: none;
 
-    background: #70c050;
+    background: #3ef017;
     color: #fff;
     cursor: pointer;
 
+    line-height: 30px;
+    padding: 0 10px;
+    margin-left: 20px;
+}
+
+.logout {
+    border-radius: 3px;
+    border: 1px solid #ea151d;
+    font-weight: 600;
+    font-size: 16px;
+    outline: none;
+    background: #ea151d;
+    color: #fff;
+    cursor: pointer;
     line-height: 30px;
     padding: 0 10px;
     margin-left: 20px;
@@ -174,10 +188,10 @@
     text-align: center;
     line-height: 120px;
     border-radius: 50%;
-    border: 2px solid #3897f0;
+    border: 2px solid #3ef017;
 }
 
 .more-content a {
-    color: #3897f0;
+    color: #3ef017;
     font-size: 14px;
 }
