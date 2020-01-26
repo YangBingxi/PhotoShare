@@ -120,6 +120,13 @@
     font-size: 14px;
 }
 
+.more-discuss_ {
+    font-size: 14px;
+    color: #888;
+    font-weight: normal;
+    cursor: pointer;
+}
+
 .discuss-list li.more-discuss a {
     color: #888;
     font-weight: normal;

@@ -23,6 +23,14 @@
     margin-left: 30px;
 }
 
+.web-name {
+    float: left;
+    margin-top: 20px;
+    margin-left: 5px;
+    font-size: 20px;
+    color: #1c09f291;
+}
+
 .web-menu {
     float: right;
     margin-top: 20px;

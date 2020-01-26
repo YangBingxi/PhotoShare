@@ -78,16 +78,14 @@ $(function () {
                             '<ul class="discuss-list">',
                             '<li class="more-discuss">',
                             '<a>',
-                            '<span>全部 </span><span class="">#{image.comments|length}</span>',
-                            '<span> 条评论</span></a>',
+                            '<span>全部 </span><span class="">#{comment_count}</span>',
+                            '<span> 条评论,点击图片查看评论详情</span></a>',
                             '</li>',
+                            /*for each comment*/
 
-                            '<li>',
-                            '<a class="_4zhc5 _iqaka" title="zjuyxy" href="/profile/#{comments.user_id }"data-reactid=".0.1.0.0.0.2.1.2:$comment-17856951190001917.1">#{comments.username}',
-                            '<span>',
-                            '<span>#{comments.content}</span>',
-                            '</span>',
-                            '</li>',
+
+                            /*end for*/
+
                             '</ul>',
                             '<section class="discuss-edit">',
                             '<form>',

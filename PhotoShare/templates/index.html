@@ -50,7 +50,7 @@
                         <li class="more-discuss">
                             <a>
                                 <span>全部 </span><span class="">{{ image.comments|length }}</span>
-                                <span> 条评论</span></a>
+                                <span> 条评论,点击图片查看评论详情</span></a>
                         </li>
                         {% for comment in image.comments %}
                             {% if loop.index > 2 %}{% break %} {% endif %}
