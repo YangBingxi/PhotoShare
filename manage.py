@@ -9,7 +9,7 @@ manager = Manager(app)
 
 
 def get_image_url():
-    return 'http://q4auui9hp.bkt.clouddn.com/headUrl2/HeadImg' \
+    return 'http://qiniuheadimg.swyoung.top/headUrl2/HeadImg' \
            + str(random.randint(1, 171)) + \
            'sw.png'  # 在头像库中随机选取一个作为用户的头像
 
